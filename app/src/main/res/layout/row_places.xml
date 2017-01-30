@@ -10,6 +10,7 @@
     card_view:cardElevation="@dimen/card_elevation">
 
     <ImageView
+        android:transitionName="tImage"
         android:id="@+id/placeImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -25,6 +26,7 @@
 
     <LinearLayout
         android:id="@+id/placeNameHolder"
+        android:transitionName="tNameHolder"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="bottom"
