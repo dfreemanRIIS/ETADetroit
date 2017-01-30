@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
         public void onItemClick(View v, int position) {
             Intent intent = new Intent(MainActivity.this, DetailActivity.class);
             intent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
-            startActivity(intent);       
+            startActivity(intent);
         }
     };
 
