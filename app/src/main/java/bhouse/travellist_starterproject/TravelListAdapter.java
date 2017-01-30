@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.ViewHolder> {
 
     Context mContext;
-    AdapterView.OnItemClickListener mItemClickListener;
+    OnItemClickListener mItemClickListener;
 
     public TravelListAdapter(Context context) {
         this.mContext = context;
@@ -43,14 +43,14 @@ public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.Vi
         @Override
         public void onClick(View v) {
             if (mItemClickListener != null) {
-                mItemClickListener.onItemClick(null, itemView, getPosition(), 0);
+                mItemClickListener.onItemClick(itemView, getPosition());
             }
         }
 
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
-        this.mItemClickListener = (AdapterView.OnItemClickListener) mItemClickListener;
+        this.mItemClickListener =  mItemClickListener;
     }
 
     public interface OnItemClickListener {
