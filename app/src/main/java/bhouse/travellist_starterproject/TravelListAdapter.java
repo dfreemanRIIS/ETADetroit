@@ -42,8 +42,19 @@ public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.Vi
 
         @Override
         public void onClick(View v) {
-
+            if (mItemClickListener != null) {
+                mItemClickListener.onItemClick(null, itemView, getPosition(), 0);
+            }
         }
+
+    }
+
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+        this.mItemClickListener = (AdapterView.OnItemClickListener) mItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 
     @Override
