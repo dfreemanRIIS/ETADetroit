@@ -7,7 +7,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AlphaAnimation;
@@ -88,15 +90,20 @@ public class DetailActivity extends Activity implements View.OnClickListener {
   }
 
   private void getPhoto() {
-    Bitmap photo = BitmapFactory.decodeResource(getResources(), mPlace.getImageResourceId(this));
+      Bitmap photo = BitmapFactory.decodeResource(getResources(), mPlace.getImageResourceId(this));
+      colorize(photo);
   }
 
   private void colorize(Bitmap photo) {
+      Palette mPalette = Palette.generate(photo);
+      applyPalette(mPalette);
   }
 
-  private void applyPalette() {
-
-  }
+    private void applyPalette(Palette mPalette) {
+        getWindow().setBackgroundDrawable(new ColorDrawable(mPalette.getDarkMutedColor(defaultColor)));
+        mTitleHolder.setBackgroundColor(mPalette.getMutedColor(defaultColor));
+        mRevealView.setBackgroundColor(mPalette.getLightVibrantColor(defaultColor));
+    }
 
   @Override
   public void onClick(View v) {
