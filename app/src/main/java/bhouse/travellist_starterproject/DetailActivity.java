@@ -4,6 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
@@ -17,12 +21,15 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,38 +50,55 @@ public class DetailActivity extends Activity implements View.OnClickListener {
   private ArrayAdapter mToDoAdapter;
   int defaultColor;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_detail);
+    private SQLiteDatabase db;
+    private Cursor cursor;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail);
+
+        mList = (ListView) findViewById(R.id.list);
+
+        try {
+            SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(this);
+            db = DatabaseHelper.getReadableDatabase();
+            cursor = db.query("DRINK",
+                    new String[]{"_id", "NAME"},
+                    null, null, null, null, null);
+
+
+            CursorAdapter listAdapter = new SimpleCursorAdapter(this,
+                    android.R.layout.simple_list_item_1,
+                    cursor,
+                    new String[]{"NAME"},
+                    new int[]{android.R.id.text1},
+                    0);
+
+            mList.setAdapter(listAdapter);
+
+            Toast.makeText(this, "Did not break", Toast.LENGTH_SHORT).show();
+        } catch (SQLiteException e) {
+            Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT).show();
+        }
 
     mPlace = PlaceData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
-
-    mList = (ListView) findViewById(R.id.list);
     mImageView = (ImageView) findViewById(R.id.placeImage);
     mTitle = (TextView) findViewById(R.id.textView);
     mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
     mAddButton = (ImageButton) findViewById(R.id.btn_add);
     mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
     mEditTextTodo = (EditText) findViewById(R.id.etTodo);
-
     mAddButton.setOnClickListener(this);
     defaultColor = getResources().getColor(R.color.primary_dark);
-
     mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     mRevealView.setVisibility(View.INVISIBLE);
     isEditTextVisible = false;
 
-    setUpAdapter();
     loadPlace();
     windowTransition();
     getPhoto();
-  }
-
-  private void setUpAdapter() {
-    mTodoList = new ArrayList<>();
-    mToDoAdapter = new ArrayAdapter(this, R.layout.row_todo, mTodoList);
-    mList.setAdapter(mToDoAdapter);
   }
 
   private void loadPlace() {
