@@ -176,7 +176,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     private void selectItem(int position) {
         if (cursor.moveToPosition(position)) {
             Intent intent = new Intent(DetailActivity.this, RouteDetailActivity.class);
-            intent.putExtra(RouteDetailActivity.EXTRA_ROUTE, cursor.getString(1));
+            intent.putExtra(RouteDetailActivity.EXTRA_ROUTE_NAME, cursor.getString(1));
             startActivity(intent);
         }
     }

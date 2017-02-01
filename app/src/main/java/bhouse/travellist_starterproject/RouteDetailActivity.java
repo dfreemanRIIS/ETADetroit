@@ -6,21 +6,25 @@ import android.widget.TextView;
 
 public class RouteDetailActivity extends Activity {
 
-    public static final String EXTRA_ROUTE = "route";
+    public static final String EXTRA_ROUTE_NAME = "route_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route_detail);
 
+        //Get info from controller
         Controller controller = new Controller();
-        String[] test = controller.getRouteDetails(1);
+        String thisRoute = (String)getIntent().getExtras().get(EXTRA_ROUTE_NAME);
+        //Get from controller
+        String[] details = controller.getRouteDetails(thisRoute);
 
+        //Display it
         TextView nameView = (TextView)findViewById(R.id.showNameDetail);
-        nameView.setText(test[0]);
+        nameView.setText(details[0]);
         TextView companyView = (TextView)findViewById(R.id.showCompanyDetail);
-        companyView.setText(test[1]);
+        companyView.setText(details[1]);
         TextView numberView = (TextView)findViewById(R.id.showRouteNumber);
-        numberView.setText(test[2]);
+        numberView.setText(details[2]);
     }
 }
