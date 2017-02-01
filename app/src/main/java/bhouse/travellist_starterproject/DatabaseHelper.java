@@ -33,7 +33,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE DRINK (_id INTEGER PRIMARY KEY AUTOINCREMENT, " + "NAME TEXT, " + "COMPANY TEXT, " + "ROUTE_NUMBER INTEGER);");
             insertDrink(db, "FORT ST-EUREKA RD", "SmartBus", 125);
             insertDrink(db, "SOUTHSHORE", "SmartBus", 140);
-            insertDrink(db, "SCHAEFER", "DDOT", 41);
+            insertDrink(db, "SCHAEFER", "DDotBus", 41);
         }
     }
 

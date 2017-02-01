@@ -60,13 +60,24 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_detail);
 
         mList = (ListView) findViewById(R.id.list);
+        mPlace = PlaceData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
+        mImageView = (ImageView) findViewById(R.id.placeImage);
+        mTitle = (TextView) findViewById(R.id.textView);
+        mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
+        mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
+        mEditTextTodo = (EditText) findViewById(R.id.etTodo);
+        defaultColor = getResources().getColor(R.color.primary_dark);
+        mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mRevealView.setVisibility(View.INVISIBLE);
+        isEditTextVisible = false;
 
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(this);
             db = DatabaseHelper.getReadableDatabase();
+            String[] thisCompanyName = {mPlace.name};
             cursor = db.query("DRINK",
                     new String[]{"_id", "NAME"},
-                    null, null, null, null, null);
+                    "COMPANY = ?", thisCompanyName, null, null, null);
 
 
             CursorAdapter listAdapter = new SimpleCursorAdapter(this,
@@ -77,22 +88,9 @@ public class DetailActivity extends Activity implements View.OnClickListener {
                     0);
 
             mList.setAdapter(listAdapter);
-
-            Toast.makeText(this, "Did not break", Toast.LENGTH_SHORT).show();
         } catch (SQLiteException e) {
             Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT).show();
         }
-
-    mPlace = PlaceData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
-    mImageView = (ImageView) findViewById(R.id.placeImage);
-    mTitle = (TextView) findViewById(R.id.textView);
-    mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
-    mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
-    mEditTextTodo = (EditText) findViewById(R.id.etTodo);
-    defaultColor = getResources().getColor(R.color.primary_dark);
-    mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-    mRevealView.setVisibility(View.INVISIBLE);
-    isEditTextVisible = false;
 
     loadPlace();
     windowTransition();
