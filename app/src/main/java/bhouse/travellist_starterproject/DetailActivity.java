@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -96,10 +97,10 @@ public class DetailActivity extends Activity implements View.OnClickListener {
             Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT).show();
         }
 
-    loadPlace();
-    windowTransition();
-    getPhoto();
-  }
+        loadPlace();
+        windowTransition();
+        getPhoto();
+    }
 
   private void loadPlace() {
     mTitle.setText(mPlace.name);
@@ -173,6 +174,16 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     }
 
     private void selectItem(int position) {
-        Toast.makeText(this, "selectItem: " + position, Toast.LENGTH_SHORT).show();
+        if (cursor.moveToPosition(position)) {
+            Intent intent = new Intent(DetailActivity.this, RouteDetailActivity.class);
+            intent.putExtra(RouteDetailActivity.EXTRA_ROUTE, cursor.getString(1));
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }
