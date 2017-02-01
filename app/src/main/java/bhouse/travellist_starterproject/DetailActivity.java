@@ -3,6 +3,8 @@ package bhouse.travellist_starterproject;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +22,7 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
@@ -88,6 +91,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
                     0);
 
             mList.setAdapter(listAdapter);
+            mList.setOnItemClickListener(new ListItemClickListener());
         } catch (SQLiteException e) {
             Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT).show();
         }
@@ -160,4 +164,15 @@ public class DetailActivity extends Activity implements View.OnClickListener {
       isEditTextVisible = false;
       anim.start();
   }
+
+    private class ListItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+    private void selectItem(int position) {
+        Toast.makeText(this, "selectItem: " + position, Toast.LENGTH_SHORT).show();
+    }
 }
