@@ -87,10 +87,8 @@ public class DetailActivity extends Activity implements View.OnClickListener {
     mImageView = (ImageView) findViewById(R.id.placeImage);
     mTitle = (TextView) findViewById(R.id.textView);
     mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
-    mAddButton = (ImageButton) findViewById(R.id.btn_add);
     mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);
     mEditTextTodo = (EditText) findViewById(R.id.etTodo);
-    mAddButton.setOnClickListener(this);
     defaultColor = getResources().getColor(R.color.primary_dark);
     mInputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     mRevealView.setVisibility(View.INVISIBLE);
@@ -110,7 +108,6 @@ public class DetailActivity extends Activity implements View.OnClickListener {
       getWindow().getEnterTransition().addListener(new TransitionAdapter() {
           @Override
           public void onTransitionEnd(Transition transition) {
-              mAddButton.animate().alpha(1.0f);
               getWindow().getEnterTransition().removeListener(this);
           }
       });
@@ -138,26 +135,6 @@ public class DetailActivity extends Activity implements View.OnClickListener {
 
   @Override
   public void onClick(View v) {
-    switch (v.getId()) {
-      case R.id.btn_add:
-          Animatable mAnimatable;
-          if (!isEditTextVisible) {
-              revealEditText(mRevealView);
-              mEditTextTodo.requestFocus();
-              mInputManager.showSoftInput(mEditTextTodo, InputMethodManager.SHOW_IMPLICIT);
-              mAddButton.setImageResource(R.drawable.icn_morph);
-              mAnimatable = (Animatable) (mAddButton).getDrawable();
-              mAnimatable.start();
-          } else {
-              addToDo(mEditTextTodo.getText().toString());
-              mToDoAdapter.notifyDataSetChanged();
-              mInputManager.hideSoftInputFromWindow(mEditTextTodo.getWindowToken(), 0);
-              hideEditText(mRevealView);
-              mAddButton.setImageResource(R.drawable.icon_morph_reverse);
-              mAnimatable = (Animatable) (mAddButton).getDrawable();
-              mAnimatable.start();
-        }
-    }
   }
 
   private void revealEditText(LinearLayout view) {
@@ -184,29 +161,5 @@ public class DetailActivity extends Activity implements View.OnClickListener {
       });
       isEditTextVisible = false;
       anim.start();
-  }
-
-  @Override
-  public void onBackPressed() {
-    AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
-    alphaAnimation.setDuration(100);
-    mAddButton.startAnimation(alphaAnimation);
-    alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
-      @Override
-      public void onAnimationStart(Animation animation) {
-
-      }
-
-      @Override
-      public void onAnimationEnd(Animation animation) {
-        mAddButton.setVisibility(View.GONE);
-        finishAfterTransition();
-      }
-
-      @Override
-      public void onAnimationRepeat(Animation animation) {
-
-      }
-    });
   }
 }
