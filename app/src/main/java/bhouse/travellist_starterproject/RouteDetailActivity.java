@@ -17,7 +17,7 @@ public class RouteDetailActivity extends Activity {
         Controller controller = new Controller();
         String thisRoute = (String)getIntent().getExtras().get(EXTRA_ROUTE_NAME);
         //Get from controller
-        String[] details = controller.getRouteDetails(thisRoute);
+        String[] details = controller.getRouteDetails(thisRoute, this);
 
         //Display it
         TextView nameView = (TextView)findViewById(R.id.showNameDetail);
