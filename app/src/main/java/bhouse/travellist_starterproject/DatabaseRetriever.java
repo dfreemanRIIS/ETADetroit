@@ -18,24 +18,17 @@ public class DatabaseRetriever {
         this.context = context;
     }
 
-    public CursorAdapter getRouteDetails(String routeName) {
+    public Cursor getRouteDetails(String routeName) {
 
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             db = DatabaseHelper.getReadableDatabase();
             String[] thisCompanyName = {routeName};
             cursor = db.query("DRINK",
-                    new String[]{"_id", "NAME"},
+                    new String[]{"_id", "NAME", "COMPANY", "ROUTE_NUMBER"},
                     "NAME = ?", thisCompanyName, null, null, null);
 
-            CursorAdapter listAdapter = new SimpleCursorAdapter(context,
-                    android.R.layout.simple_list_item_1,
-                    cursor,
-                    new String[]{"NAME"},
-                    new int[]{android.R.id.text1},
-                    0);
-
-            return listAdapter;
+            return cursor;
 
         } catch (Exception e) {
             System.out.println("DatabaseRetriever BROKE");

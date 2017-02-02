@@ -1,11 +1,11 @@
 package bhouse.travellist_starterproject;
 
 import android.content.Context;
-import android.widget.CursorAdapter;
+import android.database.Cursor;
 
 public class Controller {
 
-    public CursorAdapter getRouteDetails(String routeName, Context context) {
+    public Cursor getRouteDetails(String routeName, Context context) {
         DatabaseRetriever databaseRetriever = new DatabaseRetriever(context);
         return databaseRetriever.getRouteDetails(routeName);
     }

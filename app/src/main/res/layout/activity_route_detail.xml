@@ -11,9 +11,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="bhouse.travellist_starterproject.RouteDetailActivity">
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listDetails" />
+        android:id="@+id/listDetails1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listDetails2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listDetails3" />
+
 
 </LinearLayout>
