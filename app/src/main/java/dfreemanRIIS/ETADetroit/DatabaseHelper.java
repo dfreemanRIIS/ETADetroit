@@ -1,4 +1,4 @@
-package bhouse.travellist_starterproject;
+package dfreemanRIIS.ETADetroit;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

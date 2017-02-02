@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package bhouse.travellist_starterproject;
+package dfreemanRIIS.ETADetroit;
 
 import android.transition.Transition;
 
