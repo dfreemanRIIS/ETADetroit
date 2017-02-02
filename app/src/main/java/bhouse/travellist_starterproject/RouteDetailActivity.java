@@ -27,12 +27,18 @@ public class RouteDetailActivity extends Activity {
             TextView textView4 = (TextView)findViewById(R.id.listDetails4);
             TextView textView5 = (TextView)findViewById(R.id.listDetails5);
             TextView textView6 = (TextView)findViewById(R.id.listDetails6);
-            textView1.setText(details.getString(1));
-            textView2.setText(details.getString(2));
-            textView3.setText(details.getString(3));
-            textView4.setText(details.getString(4));
-            textView5.setText(details.getString(5));
-            textView6.setText(details.getString(6));
+            String placeHolder1 = "Company: " + details.getString(1);
+            String placeHolder2 = "Route name: " + details.getString(2);
+            String placeHolder3 = "Route number: " + details.getString(3);
+            String placeHolder4 = "Direction 1: " + details.getString(4);
+            String placeHolder5 = "Direction 2: " + details.getString(5);
+            String placeHolder6 = "Days active: " + details.getString(6);
+            textView1.setText(placeHolder1);
+            textView2.setText(placeHolder2);
+            textView3.setText(placeHolder3);
+            textView4.setText(placeHolder4);
+            textView5.setText(placeHolder5);
+            textView6.setText(placeHolder6);
         }
     }
 }
