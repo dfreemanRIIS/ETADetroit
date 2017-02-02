@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PlaceData {
 
-  public static String[] placeNameArray = {"DDotBus", "ReflexBus", "SmartBus"};
+  public static String[] placeNameArray = {"DDOT", "RefleX", "SmartBus"};
 
   public static ArrayList<Place> placeList() {
     ArrayList<Place> list = new ArrayList<>();

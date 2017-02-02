@@ -23,10 +23,10 @@ public class DatabaseRetriever {
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             db = DatabaseHelper.getReadableDatabase();
-            String[] thisCompanyName = {routeName};
-            cursor = db.query("DRINK",
-                    new String[]{"_id", "NAME", "COMPANY", "ROUTE_NUMBER"},
-                    "NAME = ?", thisCompanyName, null, null, null);
+            String[] thisRouteName = {routeName};
+            cursor = db.query("routes",
+                    new String[]{"_id", "company", "route_name", "route_number"},
+                    "route_name = ?", thisRouteName, null, null, null);
 
             return cursor;
 

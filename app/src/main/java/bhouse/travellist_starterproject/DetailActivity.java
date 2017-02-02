@@ -79,15 +79,15 @@ public class DetailActivity extends Activity implements View.OnClickListener {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(this);
             db = DatabaseHelper.getReadableDatabase();
             String[] thisCompanyName = {mPlace.name};
-            cursor = db.query("DRINK",
-                    new String[]{"_id", "NAME"},
-                    "COMPANY = ?", thisCompanyName, null, null, null);
+            cursor = db.query("routes",
+                    new String[]{"_id", "route_name"},
+                    "company = ?", thisCompanyName, null, null, null);
 
 
             CursorAdapter listAdapter = new SimpleCursorAdapter(this,
                     android.R.layout.simple_list_item_1,
                     cursor,
-                    new String[]{"NAME"},
+                    new String[]{"route_name"},
                     new int[]{android.R.id.text1},
                     0);
 
