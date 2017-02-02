@@ -28,9 +28,15 @@ public class RouteDetailActivity extends Activity {
             TextView textView1 = (TextView)findViewById(R.id.listDetails1);
             TextView textView2 = (TextView)findViewById(R.id.listDetails2);
             TextView textView3 = (TextView)findViewById(R.id.listDetails3);
+            TextView textView4 = (TextView)findViewById(R.id.listDetails4);
+            TextView textView5 = (TextView)findViewById(R.id.listDetails5);
+            TextView textView6 = (TextView)findViewById(R.id.listDetails6);
             textView1.setText(details.getString(1));
             textView2.setText(details.getString(2));
             textView3.setText(details.getString(3));
+            textView4.setText(details.getString(4));
+            textView5.setText(details.getString(5));
+            textView6.setText(details.getString(6));
         }
     }
 }

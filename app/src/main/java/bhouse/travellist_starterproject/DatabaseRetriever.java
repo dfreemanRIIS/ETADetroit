@@ -25,7 +25,7 @@ public class DatabaseRetriever {
             db = DatabaseHelper.getReadableDatabase();
             String[] thisRouteName = {routeName};
             cursor = db.query("routes",
-                    new String[]{"_id", "company", "route_name", "route_number"},
+                    new String[]{"_id", "company", "route_name", "route_number", "direction1", "direction2", "days_active"},
                     "route_name = ?", thisRouteName, null, null, null);
 
             return cursor;
