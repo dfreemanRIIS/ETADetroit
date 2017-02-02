@@ -17,7 +17,6 @@ public class RouteDetailActivity extends Activity {
         //Get info from controller
         Controller controller = new Controller();
         String thisRoute = (String)getIntent().getExtras().get(EXTRA_ROUTE_NAME);
-        //Get from controller
         Cursor details = controller.getRouteDetails(thisRoute, this);
 
         if(details.moveToFirst()) {

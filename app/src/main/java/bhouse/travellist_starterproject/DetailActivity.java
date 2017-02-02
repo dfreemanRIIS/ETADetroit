@@ -22,7 +22,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DetailActivity extends Activity implements View.OnClickListener {
+public class DetailActivity extends Activity {
 
   public static final String EXTRA_PARAM_ID = "place_id";
   private ImageView mImageView;
@@ -32,7 +32,7 @@ public class DetailActivity extends Activity implements View.OnClickListener {
   private Place mPlace;
   private int defaultColor;
 
-    private Cursor cursor;
+    private Cursor allRoutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,27 +49,29 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         defaultColor = getResources().getColor(R.color.primary_dark);
         mRevealView.setVisibility(View.INVISIBLE);
 
-        try {
-            SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(this);
-            SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
-            String[] thisCompanyName = {mPlace.name};
-            cursor = db.query("routes",
-                    new String[]{"_id", "route_name"},
-                    "company = ?", thisCompanyName, null, null, null);
+        //Get info from controller
+        Controller controller = new Controller();
+        allRoutes = controller.getAllRoute(mPlace.name, this);
 
+        CursorAdapter listAdapter = new SimpleCursorAdapter(this,
+                android.R.layout.simple_list_item_1,
+                allRoutes,
+                new String[]{"route_name"},
+                new int[]{android.R.id.text1},
+                0);
 
-            CursorAdapter listAdapter = new SimpleCursorAdapter(this,
-                    android.R.layout.simple_list_item_1,
-                    cursor,
-                    new String[]{"route_name"},
-                    new int[]{android.R.id.text1},
-                    0);
+        mList.setAdapter(listAdapter);
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            mList.setAdapter(listAdapter);
-            mList.setOnItemClickListener(new ListItemClickListener());
-        } catch (SQLiteException e) {
-            Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT).show();
-        }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (allRoutes.moveToPosition(position)) {
+                    Intent intent = new Intent(DetailActivity.this, RouteDetailActivity.class);
+                    intent.putExtra(RouteDetailActivity.EXTRA_ROUTE_NAME, allRoutes.getString(1));
+                    startActivity(intent);
+                }
+            }
+        });
 
         loadPlace();
         windowTransition();
@@ -104,25 +106,6 @@ public class DetailActivity extends Activity implements View.OnClickListener {
         getWindow().setBackgroundDrawable(new ColorDrawable(mPalette.getDarkMutedColor(defaultColor)));
         mTitleHolder.setBackgroundColor(mPalette.getMutedColor(defaultColor));
         mRevealView.setBackgroundColor(mPalette.getLightVibrantColor(defaultColor));
-    }
-
-  @Override
-  public void onClick(View v) {
-  }
-
-    private class ListItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
-        }
-    }
-
-    private void selectItem(int position) {
-        if (cursor.moveToPosition(position)) {
-            Intent intent = new Intent(DetailActivity.this, RouteDetailActivity.class);
-            intent.putExtra(RouteDetailActivity.EXTRA_ROUTE_NAME, cursor.getString(1));
-            startActivity(intent);
-        }
     }
 
     @Override

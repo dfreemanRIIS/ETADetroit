@@ -9,4 +9,9 @@ class Controller {
         DatabaseRetriever databaseRetriever = new DatabaseRetriever(context);
         return databaseRetriever.getRouteDetails(routeName);
     }
+
+    public Cursor getAllRoute(String companyName, Context context) {
+        DatabaseRetriever databaseRetriever = new DatabaseRetriever(context);
+        return databaseRetriever.getAllRoutes(companyName);
+    }
 }
