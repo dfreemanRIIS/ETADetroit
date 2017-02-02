@@ -5,7 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import java.util.ArrayList;
+import android.widget.CursorAdapter;
+import android.widget.SimpleCursorAdapter;
 
 public class DatabaseRetriever extends Activity {
 
@@ -17,9 +18,7 @@ public class DatabaseRetriever extends Activity {
         this.context = context;
     }
 
-    public ArrayList<String> getRouteDetails(String routeName) {
-
-        ArrayList<String> routeDetails = new ArrayList<>();
+    public CursorAdapter getRouteDetails(String routeName) {
 
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
@@ -29,8 +28,6 @@ public class DatabaseRetriever extends Activity {
                     new String[]{"_id", "NAME"},
                     "NAME = ?", thisCompanyName, null, null, null);
 
-
-            /*
             CursorAdapter listAdapter = new SimpleCursorAdapter(this,
                     android.R.layout.simple_list_item_1,
                     cursor,
@@ -38,19 +35,12 @@ public class DatabaseRetriever extends Activity {
                     new int[]{android.R.id.text1},
                     0);
 
-            mList.setAdapter(listAdapter);
-            mList.setOnItemClickListener(new DetailActivity.ListItemClickListener());
-            */
+            return listAdapter;
+
         } catch (Exception e) {
             System.out.println("DatabaseRetriever BROKE");
             System.out.println(e);
+            return null;
         }
-
-
-        //The test return statement
-        routeDetails.add(routeName);
-        routeDetails.add("Company");
-        routeDetails.add("Route_number");
-        return routeDetails;
     }
 }
