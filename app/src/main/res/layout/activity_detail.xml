@@ -9,11 +9,12 @@
     android:layout_height="wrap_content">
 
     <ImageView
-      android:id="@+id/placeImage"
-      android:layout_width="match_parent"
-      android:layout_height="220dp"
-      android:scaleType="centerCrop"
-      android:transitionName="tImage" />
+        android:id="@+id/placeImage"
+        android:contentDescription="@string/content_description"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop"
+        android:transitionName="tImage" />
 
     <LinearLayout
       android:id="@+id/llEditTextHolder"
@@ -23,6 +24,8 @@
 
       <EditText
         android:id="@+id/etTodo"
+        android:inputType="none"
+        android:hint=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -34,10 +37,6 @@
 
   </FrameLayout>
 
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
     <LinearLayout
       android:id="@+id/placeNameHolder"
       android:layout_width="match_parent"
@@ -45,14 +44,15 @@
       android:background="@color/primary_dark"
       android:transitionName="tNameHolder">
 
-      <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
 
         <include
             android:id="@+id/toolbar"
@@ -60,14 +60,12 @@
 
     </LinearLayout>
 
-  </FrameLayout>
-
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="15dp"
+    android:layout_marginStart="15dp"
     android:layout_marginTop="-10dp"
-    android:text="MY ACTIVITIES"
+    android:text="@string/my_activities"
     android:textAppearance="?android:attr/textAppearanceSmall"
     android:textColor="@android:color/white" />
 

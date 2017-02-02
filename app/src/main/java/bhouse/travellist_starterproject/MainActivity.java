@@ -21,9 +21,7 @@ public class MainActivity extends Activity {
 
     private Menu menu;
     private boolean isListView;
-    private RecyclerView mRecyclerView;
     private StaggeredGridLayoutManager mStaggeredLayoutManager;
-    private TravelListAdapter mAdapter;
     private Toolbar toolbar;
 
   @Override
@@ -31,17 +29,17 @@ public class MainActivity extends Activity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       isListView = true;
-      mRecyclerView = (RecyclerView) findViewById(R.id.list);
+      RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
       mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
       mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-      mAdapter = new TravelListAdapter(this);
+      TravelListAdapter mAdapter = new TravelListAdapter(this);
       mRecyclerView.setAdapter(mAdapter);
       mAdapter.setOnItemClickListener(onItemClickListener);
       toolbar = (Toolbar) findViewById(R.id.toolbar);
       setUpActionBar();
   }
 
-    TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
+    private final TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
             // 1

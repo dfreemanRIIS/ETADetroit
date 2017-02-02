@@ -18,7 +18,7 @@ package bhouse.travellist_starterproject;
 
 import android.transition.Transition;
 
-public class TransitionAdapter implements Transition.TransitionListener {
+class TransitionAdapter implements Transition.TransitionListener {
   @Override
   public void onTransitionStart(Transition transition) {
 

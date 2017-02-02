@@ -2,11 +2,7 @@ package bhouse.travellist_starterproject;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Display;
-import android.widget.CursorAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.database.Cursor;
 
 public class RouteDetailActivity extends Activity {

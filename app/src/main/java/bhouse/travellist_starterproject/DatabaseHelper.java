@@ -1,13 +1,8 @@
 package bhouse.travellist_starterproject;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-/**
- * Created by dfreeman
- */
 
 class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -24,11 +19,5 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
-
-    private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
-
-    private static void insertDrink(SQLiteDatabase db, String name, String company, int routeNumber) {
     }
 }
