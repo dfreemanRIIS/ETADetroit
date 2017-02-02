@@ -42,23 +42,18 @@ public class MainActivity extends Activity {
     private final TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
-            // 1
             Intent transitionIntent = new Intent(MainActivity.this, DetailActivity.class);
             transitionIntent.putExtra(DetailActivity.EXTRA_PARAM_ID, position);
             ImageView placeImage = (ImageView) v.findViewById(R.id.placeImage);
             LinearLayout placeNameHolder = (LinearLayout) v.findViewById(R.id.placeNameHolder);
-            // 2
             View navigationBar = findViewById(android.R.id.navigationBarBackground);
             View statusBar = findViewById(android.R.id.statusBarBackground);
-
             Pair<View, String> imagePair = Pair.create((View) placeImage, "tImage");
             Pair<View, String> holderPair = Pair.create((View) placeNameHolder, "tNameHolder");
-            // 3
             Pair<View, String> navPair = Pair.create(navigationBar,
                     Window.NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME);
             Pair<View, String> statusPair = Pair.create(statusBar, Window.STATUS_BAR_BACKGROUND_TRANSITION_NAME);
             Pair<View, String> toolbarPair = Pair.create((View)toolbar, "tActionBar");
-            // 4
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
                     imagePair, holderPair, navPair, statusPair, toolbarPair);
             ActivityCompat.startActivity(MainActivity.this, transitionIntent, options.toBundle());
@@ -76,7 +71,6 @@ public class MainActivity extends Activity {
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu_main, menu);
     this.menu = menu;
