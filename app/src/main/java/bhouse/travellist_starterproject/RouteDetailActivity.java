@@ -2,7 +2,12 @@ package bhouse.travellist_starterproject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Display;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class RouteDetailActivity extends Activity {
 
@@ -17,14 +22,17 @@ public class RouteDetailActivity extends Activity {
         Controller controller = new Controller();
         String thisRoute = (String)getIntent().getExtras().get(EXTRA_ROUTE_NAME);
         //Get from controller
-        String[] details = controller.getRouteDetails(thisRoute, this);
+        ArrayList<String> details = controller.getRouteDetails(thisRoute, this);
 
-        //Display it
-        TextView nameView = (TextView)findViewById(R.id.showNameDetail);
-        nameView.setText(details[0]);
-        TextView companyView = (TextView)findViewById(R.id.showCompanyDetail);
-        companyView.setText(details[1]);
-        TextView numberView = (TextView)findViewById(R.id.showRouteNumber);
-        numberView.setText(details[2]);
+        if(details.size() == 3) {
+            TextView nameView = (TextView) findViewById(R.id.showNameDetail);
+            nameView.setText(details.get(0));
+            TextView companyView = (TextView) findViewById(R.id.showCompanyDetail);
+            companyView.setText(details.get(1));
+            TextView numberView = (TextView) findViewById(R.id.showRouteNumber);
+            numberView.setText(details.get(2));
+        } else {
+            Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT).show();
+        }
     }
 }

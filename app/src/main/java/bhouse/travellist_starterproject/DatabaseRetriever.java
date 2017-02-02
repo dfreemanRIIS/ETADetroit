@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import java.util.ArrayList;
 
 public class DatabaseRetriever extends Activity {
 
@@ -16,7 +17,9 @@ public class DatabaseRetriever extends Activity {
         this.context = context;
     }
 
-    public String[] getRouteDetails(String routeName) {
+    public ArrayList<String> getRouteDetails(String routeName) {
+
+        ArrayList<String> routeDetails = new ArrayList<>();
 
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
@@ -45,7 +48,9 @@ public class DatabaseRetriever extends Activity {
 
 
         //The test return statement
-        String[] routeDetails = {routeName, "Company", "Route_number"};
+        routeDetails.add(routeName);
+        routeDetails.add("Company");
+        routeDetails.add("Route_number");
         return routeDetails;
     }
 }
