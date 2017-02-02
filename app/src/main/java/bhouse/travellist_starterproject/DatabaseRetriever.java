@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 
-public class DatabaseRetriever extends Activity {
+public class DatabaseRetriever {
 
     private SQLiteDatabase db;
     private Cursor cursor;
@@ -28,7 +28,7 @@ public class DatabaseRetriever extends Activity {
                     new String[]{"_id", "NAME"},
                     "NAME = ?", thisCompanyName, null, null, null);
 
-            CursorAdapter listAdapter = new SimpleCursorAdapter(this,
+            CursorAdapter listAdapter = new SimpleCursorAdapter(context,
                     android.R.layout.simple_list_item_1,
                     cursor,
                     new String[]{"NAME"},
