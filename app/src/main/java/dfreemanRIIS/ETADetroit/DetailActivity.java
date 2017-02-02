@@ -1,4 +1,4 @@
-package bhouse.travellist_starterproject;
+package dfreemanRIIS.ETADetroit;
 
 import android.app.Activity;
 import android.content.Intent;
