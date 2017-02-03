@@ -24,20 +24,20 @@ public class MainActivity extends Activity {
     private StaggeredGridLayoutManager mStaggeredLayoutManager;
     private Toolbar toolbar;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
-      isListView = true;
-      RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
-      mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
-      mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-      TravelListAdapter mAdapter = new TravelListAdapter(this);
-      mRecyclerView.setAdapter(mAdapter);
-      mAdapter.setOnItemClickListener(onItemClickListener);
-      toolbar = (Toolbar) findViewById(R.id.toolbar);
-      setUpActionBar();
-  }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        isListView = true;
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
+        mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
+        TravelListAdapter mAdapter = new TravelListAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(onItemClickListener);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setUpActionBar();
+    }
 
     private final TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
         @Override
@@ -60,45 +60,45 @@ public class MainActivity extends Activity {
         }
     };
     
-  private void setUpActionBar() {
-      if (toolbar != null) {
-          setActionBar(toolbar);
-          getActionBar().setDisplayHomeAsUpEnabled(false);
-          getActionBar().setDisplayShowTitleEnabled(true);
-          getActionBar().setElevation(7);
-      }
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.menu_main, menu);
-    this.menu = menu;
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    int id = item.getItemId();
-    if (id == R.id.action_toggle) {
-      toggle();
-      return true;
+    private void setUpActionBar() {
+        if (toolbar != null) {
+            setActionBar(toolbar);
+            getActionBar().setDisplayHomeAsUpEnabled(false);
+            getActionBar().setDisplayShowTitleEnabled(true);
+            getActionBar().setElevation(7);
+        }
     }
-    return super.onOptionsItemSelected(item);
-  }
 
-  private void toggle() {
-    MenuItem item = menu.findItem(R.id.action_toggle);
-    if (isListView) {
-        mStaggeredLayoutManager.setSpanCount(2);
-        item.setIcon(R.drawable.ic_action_list);
-        item.setTitle("Show as list");
-        isListView = false;
-    } else {
-        mStaggeredLayoutManager.setSpanCount(1);
-        item.setIcon(R.drawable.ic_action_grid);
-        item.setTitle("Show as grid");
-        isListView = true;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        this.menu = menu;
+        return true;
     }
-  }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_toggle) {
+            toggle();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void toggle() {
+        MenuItem item = menu.findItem(R.id.action_toggle);
+        if (isListView) {
+            mStaggeredLayoutManager.setSpanCount(2);
+            item.setIcon(R.drawable.ic_action_list);
+            item.setTitle("Show as list");
+            isListView = false;
+        } else {
+            mStaggeredLayoutManager.setSpanCount(1);
+            item.setIcon(R.drawable.ic_action_grid);
+            item.setTitle("Show as grid");
+            isListView = true;
+        }
+    }
 }

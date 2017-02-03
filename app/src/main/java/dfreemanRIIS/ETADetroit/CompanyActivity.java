@@ -19,19 +19,17 @@ import android.widget.TextView;
 
 public class CompanyActivity extends Activity {
 
-  public static final String EXTRA_PARAM_ID = "place_id";
-  private ImageView mImageView;
-  private TextView mTitle;
-  private LinearLayout mTitleHolder;
-  private LinearLayout mRevealView;
-  private BusCompany mBusCompany;
-  private int defaultColor;
-
+    public static final String EXTRA_PARAM_ID = "place_id";
+    private ImageView mImageView;
+    private TextView mTitle;
+    private LinearLayout mTitleHolder;
+    private LinearLayout mRevealView;
+    private BusCompany mBusCompany;
+    private int defaultColor;
     private Cursor allRoutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company);
 
@@ -69,29 +67,29 @@ public class CompanyActivity extends Activity {
         getPhoto();
     }
 
-  private void loadPlace() {
-    mTitle.setText(mBusCompany.name);
-    mImageView.setImageResource(mBusCompany.getImageResourceId(this));
-  }
+    private void loadPlace() {
+        mTitle.setText(mBusCompany.name);
+        mImageView.setImageResource(mBusCompany.getImageResourceId(this));
+    }
 
-  private void windowTransition() {
-      getWindow().getEnterTransition().addListener(new TransitionAdapter() {
-          @Override
-          public void onTransitionEnd(Transition transition) {
-              getWindow().getEnterTransition().removeListener(this);
-          }
-      });
-  }
+    private void windowTransition() {
+        getWindow().getEnterTransition().addListener(new TransitionAdapter() {
+        @Override
+        public void onTransitionEnd(Transition transition) {
+            getWindow().getEnterTransition().removeListener(this);
+        }
+        });
+    }
 
-  private void getPhoto() {
-      Bitmap photo = BitmapFactory.decodeResource(getResources(), mBusCompany.getImageResourceId(this));
-      colorize(photo);
-  }
+    private void getPhoto() {
+        Bitmap photo = BitmapFactory.decodeResource(getResources(), mBusCompany.getImageResourceId(this));
+        colorize(photo);
+    }
 
-  private void colorize(Bitmap photo) {
-      Palette mPalette = Palette.generate(photo);
-      applyPalette(mPalette);
-  }
+    private void colorize(Bitmap photo) {
+        Palette mPalette = Palette.generate(photo);
+        applyPalette(mPalette);
+    }
 
     private void applyPalette(Palette mPalette) {
         getWindow().setBackgroundDrawable(new ColorDrawable(mPalette.getDarkMutedColor(defaultColor)));
