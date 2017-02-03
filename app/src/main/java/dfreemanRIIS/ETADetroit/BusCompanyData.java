@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 class BusCompanyData {
 
-    private String[] placeNameArray = new String[3];
+    private final String[] placeNameArray = new String[3];
 
     public BusCompanyData(Context context) {
         Controller controller = new Controller();
