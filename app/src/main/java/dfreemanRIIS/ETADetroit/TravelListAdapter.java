@@ -57,7 +57,7 @@ public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return new PlaceData().placeList().size();
+        return new BusCompanyData().placeList().size();
     }
 
     @Override
@@ -68,11 +68,11 @@ public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final Place place = new PlaceData().placeList().get(position);
-        holder.placeName.setText(place.name);
-        Picasso.with(mContext).load(place.getImageResourceId(mContext)).into(holder.placeImage);
+        final BusCompany busCompany = new BusCompanyData().placeList().get(position);
+        holder.placeName.setText(busCompany.name);
+        Picasso.with(mContext).load(busCompany.getImageResourceId(mContext)).into(holder.placeImage);
 
-        Bitmap photo = BitmapFactory.decodeResource(mContext.getResources(), place.getImageResourceId(mContext));
+        Bitmap photo = BitmapFactory.decodeResource(mContext.getResources(), busCompany.getImageResourceId(mContext));
 
         Palette.generateAsync(photo, new Palette.PaletteAsyncListener() {
           public void onGenerated(Palette palette) {

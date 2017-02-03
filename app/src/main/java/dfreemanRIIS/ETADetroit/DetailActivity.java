@@ -25,7 +25,7 @@ public class DetailActivity extends Activity {
   private TextView mTitle;
   private LinearLayout mTitleHolder;
   private LinearLayout mRevealView;
-  private Place mPlace;
+  private BusCompany mBusCompany;
   private int defaultColor;
 
     private Cursor allRoutes;
@@ -37,7 +37,7 @@ public class DetailActivity extends Activity {
         setContentView(R.layout.activity_detail);
 
         ListView mList = (ListView) findViewById(R.id.list);
-        mPlace = PlaceData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
+        mBusCompany = BusCompanyData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
         mImageView = (ImageView) findViewById(R.id.placeImage);
         mTitle = (TextView) findViewById(R.id.textView);
         mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
@@ -47,7 +47,7 @@ public class DetailActivity extends Activity {
 
         //Get info from controller
         Controller controller = new Controller();
-        allRoutes = controller.getAllRoute(mPlace.name, this);
+        allRoutes = controller.getAllRoute(mBusCompany.name, this);
 
         CursorAdapter listAdapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1,
@@ -75,8 +75,8 @@ public class DetailActivity extends Activity {
     }
 
   private void loadPlace() {
-    mTitle.setText(mPlace.name);
-    mImageView.setImageResource(mPlace.getImageResourceId(this));
+    mTitle.setText(mBusCompany.name);
+    mImageView.setImageResource(mBusCompany.getImageResourceId(this));
   }
 
   private void windowTransition() {
@@ -89,7 +89,7 @@ public class DetailActivity extends Activity {
   }
 
   private void getPhoto() {
-      Bitmap photo = BitmapFactory.decodeResource(getResources(), mPlace.getImageResourceId(this));
+      Bitmap photo = BitmapFactory.decodeResource(getResources(), mBusCompany.getImageResourceId(this));
       colorize(photo);
   }
 
