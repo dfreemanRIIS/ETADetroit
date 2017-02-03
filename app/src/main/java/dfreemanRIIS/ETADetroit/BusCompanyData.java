@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 class BusCompanyData {
 
-  private final static String[] placeNameArray = {"DDOT", "RefleX", "SmartBus"};
+  private final String[] placeNameArray = {"DDOT", "RefleX", "SmartBus"};
 
-  public static ArrayList<BusCompany> placeList() {
+  public ArrayList<BusCompany> placeList() {
     ArrayList<BusCompany> list = new ArrayList<>();
     for (String aPlaceNameArray : placeNameArray) {
       BusCompany busCompany = new BusCompany();

@@ -36,7 +36,8 @@ public class CompanyActivity extends Activity {
         setContentView(R.layout.activity_company);
 
         ListView mList = (ListView) findViewById(R.id.list);
-        mBusCompany = BusCompanyData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
+        BusCompanyData busCompanyData = new BusCompanyData();
+        mBusCompany = busCompanyData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
         mImageView = (ImageView) findViewById(R.id.placeImage);
         mTitle = (TextView) findViewById(R.id.textView);
         mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
