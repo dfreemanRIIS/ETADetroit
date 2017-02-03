@@ -15,7 +15,6 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 public class CompanyActivity extends Activity {
@@ -49,12 +48,7 @@ public class CompanyActivity extends Activity {
         Controller controller = new Controller();
         allRoutes = controller.getAllRoute(mBusCompany.name, this);
 
-        CursorAdapter listAdapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_1,
-                allRoutes,
-                new String[]{"route_name"},
-                new int[]{android.R.id.text1},
-                0);
+        CursorAdapter listAdapter = new TodoCursorAdapter(this, allRoutes);
 
         mList.setAdapter(listAdapter);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
