@@ -8,10 +8,10 @@ class BusCompanyData {
 
   public static ArrayList<BusCompany> placeList() {
     ArrayList<BusCompany> list = new ArrayList<>();
-    for (int i = 0; i < placeNameArray.length; i++) {
+    for (String aPlaceNameArray : placeNameArray) {
       BusCompany busCompany = new BusCompany();
-      busCompany.name = placeNameArray[i];
-      busCompany.imageName = placeNameArray[i].replaceAll("\\s+", "").toLowerCase();
+      busCompany.name = aPlaceNameArray;
+      busCompany.imageName = aPlaceNameArray.replaceAll("\\s+", "").toLowerCase();
       list.add(busCompany);
     }
     return (list);

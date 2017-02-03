@@ -12,7 +12,7 @@ class DatabaseHelper extends SQLiteAssetHelper {
 
     private static final String DB_NAME = "ETADetroitDatabase.db";
     private static final int DB_VERSION = 1;
-    private Context context;
+    private final Context context;
 
 
     DatabaseHelper(Context context) {
@@ -26,11 +26,10 @@ class DatabaseHelper extends SQLiteAssetHelper {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
             String[] thisRouteName = {routeName};
-            Cursor cursor = db.query("routes",
+
+            return db.query("routes",
                     new String[]{"_id", "company", "route_name", "route_number", "direction1", "direction2", "days_active"},
                     "route_name = ?", thisRouteName, null, null, null);
-
-            return cursor;
 
         } catch (Exception e) {
             System.out.println("DatabaseHelper getRouteDetails BROKE");
@@ -43,11 +42,10 @@ class DatabaseHelper extends SQLiteAssetHelper {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
             String[] thisCompanyName = {companyName};
-            Cursor cursor = db.query("routes",
+
+            return db.query("routes",
                     new String[]{"_id", "route_name", "route_number"},
                     "company = ?", thisCompanyName, null, null, null);
-
-            return cursor;
 
         } catch (SQLiteException e) {
             System.out.println("DatabaseHelper getAllRoutes BROKE");
@@ -60,11 +58,10 @@ class DatabaseHelper extends SQLiteAssetHelper {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
             String[] thisRouteID = {route_id};
-            Cursor cursor = db.query("stop_locations",
+
+            return db.query("stop_locations",
                     new String[]{"_id", "stop_name"},
                     "route_id = ?", thisRouteID, null, null, null);
-
-            return cursor;
 
         } catch (SQLiteException e) {
             System.out.println("DatabaseHelper getRouteStops BROKE");
