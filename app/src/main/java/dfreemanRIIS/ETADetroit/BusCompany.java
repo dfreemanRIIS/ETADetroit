@@ -2,7 +2,7 @@ package dfreemanRIIS.ETADetroit;
 
 import android.content.Context;
 
-class Place {
+class BusCompany {
 
   public String name;
   public String imageName;
