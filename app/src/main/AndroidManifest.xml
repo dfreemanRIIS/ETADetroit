@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="dfreemanRIIS.ETADetroit.DetailActivity"
+            android:name="dfreemanRIIS.ETADetroit.CompanyActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="dfreemanRIIS.ETADetroit.RouteDetailActivity"/>
     </application>
