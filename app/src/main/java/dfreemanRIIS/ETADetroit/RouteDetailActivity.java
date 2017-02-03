@@ -2,6 +2,9 @@ package dfreemanRIIS.ETADetroit;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.CursorAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.database.Cursor;
 
@@ -39,5 +42,16 @@ public class RouteDetailActivity extends Activity {
             textView5.setText(placeHolder5);
             textView6.setText(placeHolder6);
         }
+
+		Cursor stops = controller.getRouteStops(details.getString(3), this);
+        CursorAdapter listAdapter = new SimpleCursorAdapter(this,
+                android.R.layout.simple_list_item_1,
+                stops,
+                new String[]{"stop_name"},
+                new int[]{android.R.id.text1},
+                0);
+
+        ListView listStops = (ListView) findViewById(R.id.listStops);
+        listStops.setAdapter(listAdapter);
     }
 }

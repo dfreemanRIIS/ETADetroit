@@ -33,7 +33,7 @@ class DatabaseHelper extends SQLiteAssetHelper {
             return cursor;
 
         } catch (Exception e) {
-            System.out.println("DatabaseRetriever BROKE");
+            System.out.println("DatabaseHelper getRouteDetails BROKE");
             return null;
         }
     }
@@ -50,7 +50,24 @@ class DatabaseHelper extends SQLiteAssetHelper {
             return cursor;
 
         } catch (SQLiteException e) {
-            System.out.println("DatabaseRetriever BROKE");
+            System.out.println("DatabaseHelper getAllRoutes BROKE");
+            return null;
+        }
+    }
+
+    public Cursor getRouteStops(String route_id) {
+        try {
+            SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
+            SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
+            String[] thisRouteID = {route_id};
+            Cursor cursor = db.query("stop_locations",
+                    new String[]{"_id", "stop_name"},
+                    "route_id = ?", thisRouteID, null, null, null);
+
+            return cursor;
+
+        } catch (SQLiteException e) {
+            System.out.println("DatabaseHelper getRouteStops BROKE");
             return null;
         }
     }
