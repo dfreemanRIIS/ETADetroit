@@ -6,11 +6,9 @@ import java.util.ArrayList;
 
 class BusCompanyData {
 
-    private String[] placeNameArray = {"DDOT", "RefleX", "SmartBus"};
-    private Context context;
+    private String[] placeNameArray = new String[3];
 
     public BusCompanyData(Context context) {
-        this.context = context;
         Controller controller = new Controller();
         Cursor companyCursor = controller.getCompanies(context);
 
