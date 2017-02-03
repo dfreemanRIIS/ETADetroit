@@ -6,12 +6,12 @@ import android.database.Cursor;
 class Controller {
 
     public Cursor getRouteDetails(String routeName, Context context) {
-        DatabaseRetriever databaseRetriever = new DatabaseRetriever(context);
+        DatabaseHelper databaseRetriever = new DatabaseHelper(context);
         return databaseRetriever.getRouteDetails(routeName);
     }
 
     public Cursor getAllRoute(String companyName, Context context) {
-        DatabaseRetriever databaseRetriever = new DatabaseRetriever(context);
+        DatabaseHelper databaseRetriever = new DatabaseHelper(context);
         return databaseRetriever.getAllRoutes(companyName);
     }
 }
