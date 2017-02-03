@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-public class DetailActivity extends Activity {
+public class CompanyActivity extends Activity {
 
   public static final String EXTRA_PARAM_ID = "place_id";
   private ImageView mImageView;
@@ -34,7 +34,7 @@ public class DetailActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_company);
 
         ListView mList = (ListView) findViewById(R.id.list);
         mBusCompany = BusCompanyData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
@@ -62,7 +62,7 @@ public class DetailActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (allRoutes.moveToPosition(position)) {
-                    Intent intent = new Intent(DetailActivity.this, RouteDetailActivity.class);
+                    Intent intent = new Intent(CompanyActivity.this, RouteDetailActivity.class);
                     intent.putExtra(RouteDetailActivity.EXTRA_ROUTE_NAME, allRoutes.getString(1));
                     startActivity(intent);
                 }
@@ -106,7 +106,7 @@ public class DetailActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+        Intent intent = new Intent(CompanyActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }
