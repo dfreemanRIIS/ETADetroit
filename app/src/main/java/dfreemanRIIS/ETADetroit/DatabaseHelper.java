@@ -69,6 +69,21 @@ class DatabaseHelper extends SQLiteAssetHelper {
         }
     }
 
+    public Cursor getCompanies() {
+        try {
+            SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
+            SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
+
+            return db.query(true, "routes",
+                    new String[]{"company"},
+                    null, null, null, null, null, null);
+
+        } catch (SQLiteException e) {
+            System.out.println("DatabaseHelper getCompanies BROKE");
+            return null;
+        }
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }

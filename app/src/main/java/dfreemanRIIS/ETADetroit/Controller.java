@@ -19,4 +19,10 @@ class Controller {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
         return databaseHelper.getRouteStops(route_id);
     }
+
+    public Cursor getCompanies(Context context) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+        return databaseHelper.getCompanies();
+    }
+
 }
