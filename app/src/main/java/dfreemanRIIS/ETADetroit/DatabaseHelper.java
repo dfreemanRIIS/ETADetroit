@@ -44,7 +44,7 @@ class DatabaseHelper extends SQLiteAssetHelper {
             SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
             String[] thisCompanyName = {companyName};
             Cursor cursor = db.query("routes",
-                    new String[]{"_id", "route_name"},
+                    new String[]{"_id", "route_name", "route_number"},
                     "company = ?", thisCompanyName, null, null, null);
 
             return cursor;
