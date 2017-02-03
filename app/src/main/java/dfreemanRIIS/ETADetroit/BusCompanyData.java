@@ -6,13 +6,22 @@ import java.util.ArrayList;
 
 class BusCompanyData {
 
-    private final String[] placeNameArray = {"DDOT", "RefleX", "SmartBus"};
+    private String[] placeNameArray = {"DDOT", "RefleX", "SmartBus"};
     private Context context;
 
     public BusCompanyData(Context context) {
         this.context = context;
         Controller controller = new Controller();
         Cursor companyCursor = controller.getCompanies(context);
+
+        if(companyCursor.moveToFirst()) {
+            int i = 0;
+            do {
+                String newPlace = "" + companyCursor.getString(0);
+                placeNameArray[i] = newPlace;
+                i++;
+            } while (companyCursor.moveToNext());
+        }
     }
 
     public ArrayList<BusCompany> placeList() {
