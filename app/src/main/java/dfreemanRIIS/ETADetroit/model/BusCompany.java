@@ -1,8 +1,8 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.model;
 
 import android.content.Context;
 
-class BusCompany {
+public class BusCompany {
 
   public String name;
   public String imageName;

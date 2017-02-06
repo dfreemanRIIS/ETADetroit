@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import dfreemanRIIS.ETADetroit.model.BusCompany;
+import dfreemanRIIS.ETADetroit.model.BusCompanyData;
+import dfreemanRIIS.ETADetroit.R;
 
 public class TravelListAdapter extends RecyclerView.Adapter<TravelListAdapter.ViewHolder> {
 

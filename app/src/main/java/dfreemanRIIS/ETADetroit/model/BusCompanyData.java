@@ -1,10 +1,12 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.model;
 
 import android.content.Context;
 import android.database.Cursor;
 import java.util.ArrayList;
 
-class BusCompanyData {
+import dfreemanRIIS.ETADetroit.controller.Controller;
+
+public class BusCompanyData {
 
     private final String[] placeNameArray = new String[3];
 

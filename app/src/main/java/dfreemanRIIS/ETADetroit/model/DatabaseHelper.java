@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.model;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,14 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
-class DatabaseHelper extends SQLiteAssetHelper {
+public class DatabaseHelper extends SQLiteAssetHelper {
 
     private static final String DB_NAME = "ETADetroitDatabase.db";
     private static final int DB_VERSION = 1;
     private final Context context;
 
 
-    DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         this.context = context;
     }
