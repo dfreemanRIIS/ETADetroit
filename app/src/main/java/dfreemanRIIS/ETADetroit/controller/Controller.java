@@ -1,9 +1,11 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.controller;
 
 import android.content.Context;
 import android.database.Cursor;
 
-class Controller {
+import dfreemanRIIS.ETADetroit.model.DatabaseHelper;
+
+public class Controller {
 
     public Cursor getRouteDetails(String routeName, Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);

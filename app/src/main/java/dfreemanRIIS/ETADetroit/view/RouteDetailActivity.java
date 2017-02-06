@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.view;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.database.Cursor;
+
+import dfreemanRIIS.ETADetroit.R;
+import dfreemanRIIS.ETADetroit.controller.Controller;
 
 public class RouteDetailActivity extends Activity {
 

@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.support.v4.util.Pair;
 import android.widget.Toolbar;
+
+import dfreemanRIIS.ETADetroit.R;
+import dfreemanRIIS.ETADetroit.adapters.TravelListAdapter;
 
 public class MainActivity extends Activity {
 

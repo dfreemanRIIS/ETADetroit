@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-class TodoCursorAdapter extends CursorAdapter {
+import dfreemanRIIS.ETADetroit.R;
+
+public class TodoCursorAdapter extends CursorAdapter {
 
     public TodoCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);

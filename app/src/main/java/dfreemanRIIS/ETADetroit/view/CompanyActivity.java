@@ -1,4 +1,4 @@
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,6 +16,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import dfreemanRIIS.ETADetroit.R;
+import dfreemanRIIS.ETADetroit.adapters.TodoCursorAdapter;
+import dfreemanRIIS.ETADetroit.adapters.TransitionAdapter;
+import dfreemanRIIS.ETADetroit.controller.Controller;
+import dfreemanRIIS.ETADetroit.model.BusCompany;
+import dfreemanRIIS.ETADetroit.model.BusCompanyData;
 
 public class CompanyActivity extends Activity {
 

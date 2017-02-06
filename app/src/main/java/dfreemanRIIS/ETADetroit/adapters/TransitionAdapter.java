@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package dfreemanRIIS.ETADetroit;
+package dfreemanRIIS.ETADetroit.adapters;
 
 import android.transition.Transition;
 
-class TransitionAdapter implements Transition.TransitionListener {
+public class TransitionAdapter implements Transition.TransitionListener {
   @Override
   public void onTransitionStart(Transition transition) {
 
