@@ -57,7 +57,6 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
-            String[] thisRouteID = {route_id};
 
             return db.query("stop_orders",
                     new String[]{"_id", "stop_name"},
