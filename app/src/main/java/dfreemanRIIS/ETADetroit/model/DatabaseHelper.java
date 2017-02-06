@@ -57,11 +57,10 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         try {
             SQLiteOpenHelper DatabaseHelper = new DatabaseHelper(context);
             SQLiteDatabase db = DatabaseHelper.getReadableDatabase();
-            String[] thisRouteID = {route_id};
 
-            return db.query("stop_locations",
+            return db.query("stop_orders",
                     new String[]{"_id", "stop_name"},
-                    "route_id = ?", thisRouteID, null, null, null);
+                    "route_id = ? AND stop_day = ?", new String[] {route_id, "Weekday"}, null, null, null);
 
         } catch (SQLiteException e) {
             System.out.println("DatabaseHelper getRouteStops BROKE");
