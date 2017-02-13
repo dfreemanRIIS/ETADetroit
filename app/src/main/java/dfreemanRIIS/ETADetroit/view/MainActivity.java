@@ -66,7 +66,9 @@ public class MainActivity extends Activity {
     private void setUpActionBar() {
         if (toolbar != null) {
             setActionBar(toolbar);
-            getActionBar().setDisplayHomeAsUpEnabled(false);
+            if(getActionBar() != null) {
+                getActionBar().setDisplayHomeAsUpEnabled(false);
+            }
             getActionBar().setDisplayShowTitleEnabled(true);
             getActionBar().setElevation(7);
         }
