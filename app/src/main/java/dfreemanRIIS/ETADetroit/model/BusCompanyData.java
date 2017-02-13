@@ -8,7 +8,7 @@ import dfreemanRIIS.ETADetroit.controller.Controller;
 
 public class BusCompanyData {
 
-    private final String[] placeNameArray = new String[3];
+    private final String[] placeNameArray = new String[4];
 
     public BusCompanyData(Context context) {
         Controller controller = new Controller();
