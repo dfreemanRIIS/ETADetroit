@@ -3,28 +3,34 @@ package dfreemanRIIS.ETADetroit.controller;
 import android.content.Context;
 import android.database.Cursor;
 
-import dfreemanRIIS.ETADetroit.model.DatabaseHelper;
+import dfreemanRIIS.ETADetroit.entity.DatabaseHelper;
+import dfreemanRIIS.ETADetroit.model.CompanyDataModel;
+import dfreemanRIIS.ETADetroit.model.RouteDetailModel;
 
 public class Controller {
 
     public Cursor getRouteDetails(String routeName, Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        return databaseHelper.getRouteDetails(routeName);
+        RouteDetailModel routeDetailModel = new RouteDetailModel(databaseHelper);
+        return routeDetailModel.getRouteDetails(routeName);
     }
 
     public Cursor getAllRoute(String companyName, Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        return databaseHelper.getAllRoutes(companyName);
+        RouteDetailModel routeDetailModel = new RouteDetailModel(databaseHelper);
+        return routeDetailModel.getAllRoutes(companyName);
     }
 
     public Cursor getRouteStops(String route_id, Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        return databaseHelper.getRouteStops(route_id);
+        RouteDetailModel routeDetailModel = new RouteDetailModel(databaseHelper);
+        return routeDetailModel.getRouteStops(route_id);
     }
 
     public Cursor getCompanies(Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        return databaseHelper.getCompanies();
+        CompanyDataModel companyDataModel = new CompanyDataModel(databaseHelper);
+        return companyDataModel.getCompanies();
     }
 
 }

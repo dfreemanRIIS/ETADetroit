@@ -22,8 +22,8 @@ import dfreemanRIIS.ETADetroit.R;
 import dfreemanRIIS.ETADetroit.adapters.TodoCursorAdapter;
 import dfreemanRIIS.ETADetroit.adapters.TransitionAdapter;
 import dfreemanRIIS.ETADetroit.controller.Controller;
-import dfreemanRIIS.ETADetroit.model.BusCompany;
-import dfreemanRIIS.ETADetroit.model.BusCompanyData;
+import dfreemanRIIS.ETADetroit.entity.BusCompany;
+import dfreemanRIIS.ETADetroit.entity.BusCompanyData;
 
 public class CompanyActivity extends Activity {
 
