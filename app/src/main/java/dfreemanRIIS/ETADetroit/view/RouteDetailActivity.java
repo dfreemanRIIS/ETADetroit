@@ -26,7 +26,7 @@ public class RouteDetailActivity extends Activity {
         Cursor details = controller.getRouteDetails(thisRoute, this);
 
         if(details.moveToFirst()) {
-            TextView textView1 = (TextView)findViewById(R.id.listDetails);
+            TextView textView1 = (TextView)findViewById(R.id.listRouteDetailText);
             String placeHolder1 = "Company: " + details.getString(1)
                     + "\nRoute name: " + details.getString(2)
                     + "\nRoute number: " + details.getString(3)
@@ -44,7 +44,7 @@ public class RouteDetailActivity extends Activity {
                 new int[]{android.R.id.text1},
                 0);
 
-        ListView listStops = (ListView) findViewById(R.id.listStops);
+        ListView listStops = (ListView) findViewById(R.id.listActivityRouteStopDetails);
         listStops.setAdapter(listAdapter);
     }
 }

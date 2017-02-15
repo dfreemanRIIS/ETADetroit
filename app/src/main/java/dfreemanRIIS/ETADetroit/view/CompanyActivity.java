@@ -41,10 +41,10 @@ public class CompanyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company);
 
-        ListView mList = (ListView) findViewById(R.id.list);
+        ListView mList = (ListView) findViewById(R.id.companyActivityList);
         BusCompanyData busCompanyData = new BusCompanyData(this);
         mBusCompany = busCompanyData.placeList().get(getIntent().getIntExtra(EXTRA_PARAM_ID, 0));
-        mImageView = (ImageView) findViewById(R.id.placeImage);
+        mImageView = (ImageView) findViewById(R.id.companyActivityPlaceImage);
         mTitle = (TextView) findViewById(R.id.textView);
         mTitleHolder = (LinearLayout) findViewById(R.id.placeNameHolder);
         mRevealView = (LinearLayout) findViewById(R.id.llEditTextHolder);

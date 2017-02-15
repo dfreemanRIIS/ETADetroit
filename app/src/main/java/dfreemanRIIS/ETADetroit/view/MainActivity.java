@@ -36,13 +36,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         mainActivityContext = this;
         isListView = true;
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.list);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainActivityList);
         mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
         TravelListAdapter mAdapter = new TravelListAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(onItemClickListener);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.mainActivityToolbar);
         setUpActionBar();
     }
 

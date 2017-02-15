@@ -23,8 +23,8 @@ public class TodoCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView routeNumberView = (TextView) view.findViewById(R.id.routeNumber);
-        TextView routeNameView = (TextView) view.findViewById(R.id.routeName);
+        TextView routeNumberView = (TextView) view.findViewById(R.id.itemTodoRouteNumber);
+        TextView routeNameView = (TextView) view.findViewById(R.id.itemTodoRouteName);
 
 
         int routeNumber = cursor.getInt(cursor.getColumnIndexOrThrow("route_number"));
