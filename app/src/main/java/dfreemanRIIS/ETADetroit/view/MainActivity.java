@@ -20,6 +20,7 @@ import android.widget.Toolbar;
 
 import dfreemanRIIS.ETADetroit.R;
 import dfreemanRIIS.ETADetroit.adapters.TravelListAdapter;
+import dfreemanRIIS.ETADetroit.controller.Controller;
 
 public class MainActivity extends Activity {
 
@@ -48,7 +49,7 @@ public class MainActivity extends Activity {
     private final TravelListAdapter.OnItemClickListener onItemClickListener = new TravelListAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int position) {
-            if(position == 3) {
+            if(isTrain(position)) {
                 Intent intent = new Intent(MainActivity.this, RouteDetailActivity.class);
                 intent.putExtra(RouteDetailActivity.EXTRA_ROUTE_NAME, "People Mover");
                 startActivity(intent);
@@ -114,5 +115,10 @@ public class MainActivity extends Activity {
             item.setTitle("Show as grid");
             isListView = true;
         }
+    }
+
+    private boolean isTrain(int position) {
+        Controller controller = new Controller();
+        return controller.isTrain(mainActivityContext, position);
     }
 }
